@@ -37,7 +37,6 @@ fi
 #   - Specify the BIOS image.
 #   - Configure a network interface.
 #   - Port forward host:5555 <-> guest:22.
-#   - Disable VGA.
 qemu-system-x86_64 \
   -enable-kvm \
   -drive file="$DISK_PATH",format=raw \
@@ -51,8 +50,7 @@ qemu-system-x86_64 \
   -display vnc=:1 \
   -bios "$BIOS_PATH" \
   -net nic \
-  -net user,hostfwd=tcp::5555-:22,hostname=guestOS \
-  -vga none
+  -net user,hostfwd=tcp::5555-:22,hostname=guestOS
 
 # Removed options.
 #   - Use virtio for VGA.
