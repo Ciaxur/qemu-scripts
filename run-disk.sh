@@ -4,8 +4,16 @@ DISK_PATH=$1
 BIOS_PATH="/usr/share/ovmf/x64/OVMF.fd"
 IOMMU_GPU_GROUP_ID="0c:00.0"
 
+
+# Simply prints this script's usage.
+function usage () {
+  echo "Usage: $0 [DEVICE]"
+}
+
 if [[ "$DISK_PATH" = "" ]] || [[ ! -e $DISK_PATH ]]; then
-  echo "Disk path $DISK_PATH not found"
+  echo "Disk path '$DISK_PATH' not found"
+  usage
+  exit 1
 fi
 
 # Q35 Machines refers to the Q35 chipset, which is a VM Platform which emulates
